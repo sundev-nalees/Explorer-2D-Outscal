@@ -1454,3 +1454,24 @@ Received Import Request.
 Start importing Assets/Assets/2DGamekit/Scenes/Start.unity using Guid(57df1e417250bc247976c2c0dc088efe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a69d1a1dbb5ee394d1fa3014e2d41548') in 0.017456 seconds
   Import took 0.045398 seconds .
 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.014320 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.70 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.395 seconds
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.75 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2503 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 117.0 MB.
+System memory in use after: 117.1 MB.
+
+Unloading 22 unused Assets to reduce memory usage. Loaded Objects now: 3375.
+Total: 3.162300 ms (FindLiveObjects: 0.326800 ms CreateObjectMapping: 0.130700 ms MarkObjects: 2.583500 ms  DeleteObjects: 0.119900 ms)
+
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
