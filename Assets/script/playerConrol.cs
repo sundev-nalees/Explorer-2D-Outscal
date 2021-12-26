@@ -6,50 +6,77 @@ public class playerConrol : MonoBehaviour
 {
     public Animator animator;
     bool crouch = false;
-    public float verticalSpeed = 2f;
+    public float jump;
+    
+    public float speed;
     Rigidbody2D rb;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
+        
+        rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     private void Update()
     {
         //run
-        float speed = Input.GetAxisRaw("Horizontal");
-        animator.SetFloat("Speed",Mathf.Abs(speed));
-        
-        Vector3 scale = transform.localScale;
-        if (speed < 0) 
-        {
-            scale.x= -1f * Mathf.Abs(scale.x);
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Jump");
 
-        }
-        else if(speed>0)
-        {
-            scale.x = Mathf.Abs(scale.x);
-        }
-        transform.localScale = scale;
-        
+        playerMovementAnimation(horizontal,vertical);
+        playerMovementControl(horizontal,vertical);
         //crouch
-        if (Input.GetKeyDown(KeyCode.LeftControl)) 
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             crouch = true;
         }
-        else if(Input.GetKeyUp(KeyCode.LeftControl))
+        else if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             crouch = false;
         }
         animator.SetBool("crouch", crouch);
-        //jumb
-        if(Input.GetKeyDown(KeyCode.Space)) 
+       
+    }
+
+    private void playerMovementAnimation(float horizontal,float vertical)
+    {
+        //player run
+        animator.SetFloat("Speed", Mathf.Abs(horizontal));
+        Vector3 scale = transform.localScale;
+        if (horizontal < 0)
         {
-            rb.AddForce (new Vector2(0,verticalSpeed));
-            
+            scale.x = -1f * Mathf.Abs(scale.x);
+
         }
-        animator.SetFloat("verticalSpeed", rb.velocity.y);
+        else if (horizontal > 0)
+        {
+            scale.x = Mathf.Abs(scale.x);
+        }
+        transform.localScale = scale;
+        //player jumb
+
+        if (vertical > 0) 
+        {
+            animator.SetBool("Jump", true);
+        }
+        else 
+        {
+            animator.SetBool("Jump", false);
+        }
+    }
+    private void playerMovementControl(float horizontal,float vertical) 
+    {
+        //player run
+        Vector3 position = transform.position;
+        position.x +=   horizontal * speed * Time.deltaTime;
+        transform.position = position;
+        //player jump
+        if (vertical > 0) 
+        {
+            rb.AddForce(new Vector2(0f, jump), ForceMode2D.Force);
+        }
+
     }
 }
         
