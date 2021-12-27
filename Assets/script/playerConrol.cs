@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class playerConrol : MonoBehaviour
 {
+    
+    bool grounded = false;
+    float groundCheckRadius = 0.2f;
+    public LayerMask groundLayer;
+    public Transform groundCheck;
+
+
     public Animator animator;
     bool crouch = false;
     public float jump;
@@ -36,6 +43,10 @@ public class playerConrol : MonoBehaviour
             crouch = false;
         }
         animator.SetBool("crouch", crouch);
+        //jump
+        grounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        animator.SetBool("isGround", grounded);
+        animator.SetFloat("verticalSpeed", rb.velocity.y);
        
     }
 
@@ -72,11 +83,13 @@ public class playerConrol : MonoBehaviour
         position.x +=   horizontal * speed * Time.deltaTime;
         transform.position = position;
         //player jump
-        if (vertical > 0) 
+        if (grounded && vertical > 0) 
         {
+            grounded = false;
             rb.AddForce(new Vector2(0f, jump), ForceMode2D.Force);
         }
 
     }
+   
 }
         
