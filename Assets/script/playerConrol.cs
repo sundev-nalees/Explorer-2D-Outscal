@@ -10,6 +10,8 @@ public class playerConrol : MonoBehaviour
     public LayerMask groundLayer;
     public Transform groundCheck;
 
+    public scoreController scoreController;
+
 
     public Animator animator;
     bool crouch = false;
@@ -25,6 +27,11 @@ public class playerConrol : MonoBehaviour
     }
 
     // Update is called once per frame
+    public void pickUpKey() 
+    {
+        Debug.Log("player picked up the key");
+        scoreController.IncreseScore(10);
+    }
     private void Update()
     {
         //run
