@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class levelFinishedCheck : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class levelFinishedCheck : MonoBehaviour
         {
             //level complete
             Debug.Log("level finished");
+            int currentSceneNumber = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentSceneNumber + 1);
+
         }
     }
 }
