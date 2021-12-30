@@ -7,7 +7,7 @@ public class levelRestratFall : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<playerConrol>());
+        if (collision.gameObject.GetComponent<playerConrol>())
         {
             //level restart
             Debug.Log("level restart");
