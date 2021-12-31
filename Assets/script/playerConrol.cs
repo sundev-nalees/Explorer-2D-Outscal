@@ -11,6 +11,7 @@ public class playerConrol : MonoBehaviour
     public Transform groundCheck;
 
     public scoreController scoreController;
+    
 
 
     public Animator animator;
