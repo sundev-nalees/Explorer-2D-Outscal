@@ -8,6 +8,7 @@ public class playerHealth : MonoBehaviour
 {
     public int pHealth;
     [SerializeField] private Image[] hearts;
+    public gameOverScreen gameOver;
 
     private void Start()
     {
@@ -28,8 +29,7 @@ public class playerHealth : MonoBehaviour
         }
         if (hearts[1] == null)
         {
-            int currentSceneNumber = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentSceneNumber);
+            gameOver.playerDead();
         }
     }
 }
