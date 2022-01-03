@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class startScreenControl : MonoBehaviour
 {
     public Button start;
+    public GameObject levelSelection;
 
     private void Awake()
     {
@@ -15,6 +16,7 @@ public class startScreenControl : MonoBehaviour
 
     private void playGame()
     {
-        SceneManager.LoadScene(1);
+        //SceneManager.LoadScene(1);
+        levelSelection.SetActive(true);
     }
 }
