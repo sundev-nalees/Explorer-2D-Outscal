@@ -11,8 +11,10 @@ public class levelFinishedCheck : MonoBehaviour
         {
             //level complete
             Debug.Log("level finished");
-            int currentSceneNumber = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(currentSceneNumber + 1);
+            
+            //int currentSceneNumber = SceneManager.GetActiveScene().buildIndex;
+           // SceneManager.LoadScene(currentSceneNumber + 1);
+            levelManager.Instance.markCurrentLevelComplete();
 
         }
     }
