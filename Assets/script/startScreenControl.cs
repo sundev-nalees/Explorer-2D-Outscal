@@ -8,6 +8,7 @@ public class startScreenControl : MonoBehaviour
 {
     public Button start;
     public GameObject levelSelection;
+    
 
     private void Awake()
     {
@@ -17,6 +18,8 @@ public class startScreenControl : MonoBehaviour
     private void playGame()
     {
         //SceneManager.LoadScene(1);
+        
         levelSelection.SetActive(true);
+        soundManager.Instance.Play(Sounds.ButtonClick);
     }
 }

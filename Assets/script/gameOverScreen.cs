@@ -18,16 +18,19 @@ public class gameOverScreen : MonoBehaviour
     public void playerDead()
     {
         gameObject.SetActive(true);
-        Debug.Log("dead");
+        
+
     }
     private void restartGame()
     {
         int currentSceneNumber = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneNumber);
+        soundManager.Instance.Play(Sounds.ButtonClick);
     }
     private void mainMenuScene()
     {
         SceneManager.LoadScene(levelName);
+        soundManager.Instance.Play(Sounds.ButtonClick);
 
     }
 }

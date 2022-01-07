@@ -66,11 +66,13 @@ public class playerConrol : MonoBehaviour
         if (horizontal < 0)
         {
             scale.x = -1f * Mathf.Abs(scale.x);
+            
 
         }
         else if (horizontal > 0)
         {
             scale.x = Mathf.Abs(scale.x);
+           
         }
         transform.localScale = scale;
         //player jumb
@@ -90,6 +92,7 @@ public class playerConrol : MonoBehaviour
         Vector3 position = transform.position;
         position.x +=   horizontal * speed * Time.deltaTime;
         transform.position = position;
+        soundManager.Instance.Play(Sounds.PlayerMovement);
         //player jump
         if (grounded && vertical > 0) 
         {
